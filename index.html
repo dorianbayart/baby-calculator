@@ -26,7 +26,7 @@
     <div class="container">
 
       <div class="template">
-        <h1>Baby Calculator</h1>
+        <h1 id="title">Baby Calculator</h1>
         <p class="lead">Diff&eacute;rents outils pour calculer la date de f&eacute;condation ou d'accouchement pr&eacute;vue, ou encore l'&acirc;ge de votre b&eacute;b&eacute;.</p>
 		
 		<div class="jumbotron">
@@ -34,19 +34,27 @@
 				<p>Indiquez le premier jour de vos derni&egrave;res r&egrave;gles: <input id="datePicker" class="form-control" type="date"></p>
 				<p>Quelle est la dur&eacute;e de vos cycles: 
 				<select id="cyclePicker" class="form-control">
-					<option value="26">26 jours</option> 
+					<option value="21">21 jours</option>
+					<option value="22">22 jours</option>
+					<option value="23">23 jours</option>
+					<option value="24">24 jours</option>
+					<option value="25">25 jours</option>
+					<option value="26">26 jours</option>
 					<option value="27">27 jours</option>
 					<option value="28" selected>28 jours</option>
 					<option value="29">29 jours</option>
 					<option value="30">30 jours</option>
 					<option value="31">31 jours</option>
 					<option value="32">32 jours</option>
+					<option value="33">33 jours</option>
+					<option value="34">34 jours</option>
+					<option value="35">35 jours</option>
 				</select></p>
 				<button class="btn btn-default" type="submit">Calculer</button>
 			</form>
         </div>
 		
-		<div class="panel panel-default">
+		<div class="panel panel-default" id="panel_resultats">
 		  <div class="panel-body" id="resultats">
 			
 		  </div>
@@ -61,15 +69,87 @@
 	
 	<script>
 		$(document).ready( function() {
+			
+			
 			//var queryString = window.location.search.slice(1);
 			var params = getAllUrlParams();
 			var date = params.date ? params.date : new Date();
 			var cycle = params.cycle ? params.cycle : 28;
 			$('#datePicker').val(new Date(date).toDateInputValue());
 			$('#cyclePicker').val(cycle);
-			$( ".panel" ).hide();
+			$( "#panel_resultats" ).hide();
 			
-			$( "#formulaire" ).submit(function( event ) {
+			if(params.date && params.cycle) $( "#formulaire" ).submit();
+			
+		});
+		
+		Date.prototype.toDateInputValue = (function() {
+			var local = new Date(this);
+			local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+			return local.toJSON().slice(0,10);
+		});
+	</script>
+</body>
+
+</html>
+
+
+
+<script>
+function getAllUrlParams(url) {
+  // get query string from url (optional) or window
+  var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+  // we'll store the parameters here
+  var obj = {};
+  // if query string exists
+  if (queryString) {
+    // stuff after # is not part of query string, so get rid of it
+    queryString = queryString.split('#')[0];
+    // split our query string into its component parts
+    var arr = queryString.split('&');
+    for (var i=0; i<arr.length; i++) {
+      // separate the keys and the values
+      var a = arr[i].split('=');
+      // in case params look like: list[]=thing1&list[]=thing2
+      var paramNum = undefined;
+      var paramName = a[0].replace(/\[\d*\]/, function(v) {
+        paramNum = v.slice(1,-1);
+        return '';
+      });
+      // set parameter value (use 'true' if empty)
+      var paramValue = typeof(a[1])==='undefined' ? true : a[1];
+      // (optional) keep case consistent
+      paramName = paramName.toLowerCase();
+      paramValue = paramValue.toLowerCase();
+      // if parameter name already exists
+      if (obj[paramName]) {
+        // convert value to array (if still string)
+        if (typeof obj[paramName] === 'string') {
+          obj[paramName] = [obj[paramName]];
+        }
+        // if no array index number specified...
+        if (typeof paramNum === 'undefined') {
+          // put the value on the end of the array
+          obj[paramName].push(paramValue);
+        }
+        // if array index number specified...
+        else {
+          // put the value at that index number
+          obj[paramName][paramNum] = paramValue;
+        }
+      }
+      // if param name doesn't exist yet, set it
+      else {
+        obj[paramName] = paramValue;
+      }
+    }
+  }
+  return obj;
+}
+</script>
+
+<script>
+$( "#formulaire" ).submit(function( event ) {
 				event.preventDefault();
 				
 				$( "#resultats" ).html("");
@@ -113,85 +193,24 @@
 				text += "<p>Votre petit bébé a " + joursFecondation + " jours.</p>";
 				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG).</p>";
 				
+				// Accouchement
+				text += "<h2>Accouchement</h2>";
+				var accouchementDebut = new Date(fecondationDate.getTime());
+				var accouchementFin = new Date(fecondationDate.getTime());
+				accouchementDebut.setDate(accouchementDebut.getDate() + 7*38);
+				accouchementFin.setDate(accouchementFin.getDate() + 7*39 + 3);
+				
+				var joursRestantsAccouchement = Math.floor((accouchementDebut.getTime() - now.getTime())/(1000*60*60*24.));
+				text += "<p>Votre accouchement sera entre le " + accouchementDebut.toLocaleDateString() + " et le " + accouchementFin.toLocaleDateString() + ". ";
+				text += "Vous accoucherez dans " + joursRestantsAccouchement + " jours.</p>";
+				
 				$( "#resultats" ).append(text);
-				$( ".panel" ).show();
-				$('html, body').animate({
-					scrollTop: $("#resultats").offset().top
-				}, 400);
+				$( "#panel_resultats" ).show();
+				
+				var shareLink = "";
+				shareLink = '<a id="shareLink" class="btn btn-link" href="' + window.location.host + window.location.pathname + '?date=' + date.toISOString().substring(0, 10) + '&cycle=' + cycle + '" target="_blank">Raccourci vers mes dates</a>';
+				$( "#shareLink" ).remove();
+				$( "#resultats" ).after(shareLink);
+				
 			});
-		});
-		
-		Date.prototype.toDateInputValue = (function() {
-			var local = new Date(this);
-			local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-			return local.toJSON().slice(0,10);
-		});
-	</script>
-</body>
-
-</html>
-
-
-
-<script>
-function getAllUrlParams(url) {
-  // get query string from url (optional) or window
-  var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
-
-  // we'll store the parameters here
-  var obj = {};
-
-  // if query string exists
-  if (queryString) {
-
-    // stuff after # is not part of query string, so get rid of it
-    queryString = queryString.split('#')[0];
-
-    // split our query string into its component parts
-    var arr = queryString.split('&');
-
-    for (var i=0; i<arr.length; i++) {
-      // separate the keys and the values
-      var a = arr[i].split('=');
-
-      // in case params look like: list[]=thing1&list[]=thing2
-      var paramNum = undefined;
-      var paramName = a[0].replace(/\[\d*\]/, function(v) {
-        paramNum = v.slice(1,-1);
-        return '';
-      });
-
-      // set parameter value (use 'true' if empty)
-      var paramValue = typeof(a[1])==='undefined' ? true : a[1];
-
-      // (optional) keep case consistent
-      paramName = paramName.toLowerCase();
-      paramValue = paramValue.toLowerCase();
-
-      // if parameter name already exists
-      if (obj[paramName]) {
-        // convert value to array (if still string)
-        if (typeof obj[paramName] === 'string') {
-          obj[paramName] = [obj[paramName]];
-        }
-        // if no array index number specified...
-        if (typeof paramNum === 'undefined') {
-          // put the value on the end of the array
-          obj[paramName].push(paramValue);
-        }
-        // if array index number specified...
-        else {
-          // put the value at that index number
-          obj[paramName][paramNum] = paramValue;
-        }
-      }
-      // if param name doesn't exist yet, set it
-      else {
-        obj[paramName] = paramValue;
-      }
-    }
-  }
-
-  return obj;
-}
-</script>
+		</script>
