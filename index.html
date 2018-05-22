@@ -208,7 +208,7 @@ $( "#formulaire" ).submit(function( event ) {
 				$( "#panel_resultats" ).show();
 				
 				var shareLink = "";
-				shareLink = '<a id="shareLink" class="btn btn-link" href="' + window.location.host + window.location.pathname + '?date=' + date.toISOString().substring(0, 10) + '&cycle=' + cycle + '" target="_blank">Raccourci vers mes dates</a>';
+				shareLink = '<a id="shareLink" class="btn btn-link" href="' + window.location.origin + window.location.pathname + '?date=' + date.toISOString().substring(0, 10) + '&cycle=' + cycle + '" target="_blank">Raccourci vers mes dates</a>';
 				$( "#shareLink" ).remove();
 				$( "#resultats" ).after(shareLink);
 				
