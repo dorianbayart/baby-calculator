@@ -27,12 +27,12 @@
 
       <div class="template">
         <h1>Baby Calculator</h1>
-        <p class="lead">Différents outils pour calculer la date de fécondation ou d'accouchement prévue, ou encore l'âge de votre bébé.</p>
+        <p class="lead">Diff&eacute;rents outils pour calculer la date de f&eacute;condation ou d'accouchement pr&eacute;vue, ou encore l'&acirc;ge de votre b&eacute;b&eacute;.</p>
 		
 		<div class="jumbotron">
 			<form id="formulaire">
-				<p>Indiquez le premier jour de vos dernières règles: <input id="datePicker" class="form-control" type="date"></p>
-				<p>Quelle est la durée de vos cycles: 
+				<p>Indiquez le premier jour de vos derni&egrave;res r&egrave;gles: <input id="datePicker" class="form-control" type="date"></p>
+				<p>Quelle est la dur&eacute;e de vos cycles: 
 				<select id="cyclePicker" class="form-control">
 					<option value="26">26 jours</option> 
 					<option value="27">27 jours</option>
@@ -83,7 +83,7 @@
 				now.setHours(0,0,0,0);
 				
 				// Amenorrhee
-				text += "<h2>Amenorrhee</h2>";
+				text += "<h2>Am&eacute;norrh&eacute;e</h2>";
 				var joursAmenorrhee = 0;
 				var semainesAmenorrhee = 0;
 				var semainesJoursAmenorrhee = 0;
@@ -92,13 +92,13 @@
 				console.log(joursAmenorrhee);
 				semainesAmenorrhee = (joursAmenorrhee - joursAmenorrhee % 7) / 7 + 1;
 				console.log(semainesAmenorrhee);
-				text += "<p>Vous êtes dans votre " + semainesAmenorrhee + "<sup>ème</sup> semaines d'aménorrhée (SA).</p>";
+				text += "<p>Vous &ecirc;tes dans votre " + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA).</p>";
 				
 				// Date Fecondation
-				text += "<h2>Fécondation</h2>";
+				text += "<h2>F&eacute;condation</h2>";
 				var fecondationDate = new Date(date);
 				fecondationDate.setDate(date.getDate() + cycle - 14);
-				text += "<p>La date de fécondation estimée est le " + fecondationDate.toLocaleDateString() + ".</p>";
+				text += "<p>La date de f&eacute;condation estim&eacute;e est le " + fecondationDate.toLocaleDateString() + ".</p>";
 				
 				// Temps depuis fecondation
 				text += "<h2>Grossesse</h2>";
@@ -111,7 +111,7 @@
 				console.log(semainesFecondation);
 				
 				text += "<p>Votre petit bébé a " + joursFecondation + " jours.</p>";
-				text += "<p>Vous êtes dans votre " + semainesFecondation + "<sup>ème</sup> semaines de grossess (SG).</p>";
+				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG).</p>";
 				
 				$( "#resultats" ).append(text);
 				$( ".panel" ).show();
