@@ -115,6 +115,9 @@
 				
 				$( "#resultats" ).append(text);
 				$( ".panel" ).show();
+				$('html, body').animate({
+					scrollTop: $("#resultats").offset().top
+				}, 400);
 			});
 		});
 		
