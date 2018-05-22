@@ -63,8 +63,8 @@
 		$(document).ready( function() {
 			//var queryString = window.location.search.slice(1);
 			var params = getAllUrlParams();
-			var date = params.date;
-			var cycle = params.cycle;
+			var date = params.date ? params.date : new Date();
+			var cycle = params.cycle ? params.cycle : 28;
 			$('#datePicker').val(new Date(date).toDateInputValue());
 			$('#cyclePicker').val(cycle);
 			$( ".panel" ).hide();
