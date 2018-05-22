@@ -172,7 +172,7 @@ $( "#formulaire" ).submit(function( event ) {
 				console.log(joursAmenorrhee);
 				semainesAmenorrhee = (joursAmenorrhee - joursAmenorrhee % 7) / 7 + 1;
 				console.log(semainesAmenorrhee);
-				text += "<p>Vous &ecirc;tes dans votre " + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA).</p>";
+				text += "<p>Vous &ecirc;tes dans votre <b>" + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA)</b>.</p>";
 				
 				// Date Fecondation
 				text += "<h2>F&eacute;condation</h2>";
@@ -190,7 +190,7 @@ $( "#formulaire" ).submit(function( event ) {
 				semainesFecondation = (joursFecondation - joursFecondation % 7) / 7 + 1;
 				console.log(semainesFecondation);
 				
-				text += "<p>Votre petit bébé a " + joursFecondation + " jours.</p>";
+				text += "<p><b>Votre petit bébé a " + joursFecondation + " jours.</b></p>";
 				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG).</p>";
 				
 				// Accouchement
@@ -201,8 +201,8 @@ $( "#formulaire" ).submit(function( event ) {
 				accouchementFin.setDate(accouchementFin.getDate() + 7*39 + 3);
 				
 				var joursRestantsAccouchement = Math.floor((accouchementDebut.getTime() - now.getTime())/(1000*60*60*24.));
-				text += "<p>Votre accouchement sera entre le " + accouchementDebut.toLocaleDateString() + " et le " + accouchementFin.toLocaleDateString() + ". ";
-				text += "Vous accoucherez dans " + joursRestantsAccouchement + " jours.</p>";
+				text += "<p><b>Votre accouchement est pr&eacute;vu entre le " + accouchementDebut.toLocaleDateString() + "</b> et le " + accouchementFin.toLocaleDateString() + ". ";
+				text += "Vous accoucherez donc dans approximativement " + joursRestantsAccouchement + " jours.</p>";
 				
 				$( "#resultats" ).append(text);
 				$( "#panel_resultats" ).show();
