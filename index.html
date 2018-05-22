@@ -72,6 +72,8 @@
 			$( "#formulaire" ).submit(function( event ) {
 				event.preventDefault();
 				
+				$( "#resultats" ).html("");
+				
 				var text = "";
 				
 				var date = new Date($('#datePicker').val());
