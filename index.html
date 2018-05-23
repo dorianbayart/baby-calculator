@@ -172,13 +172,13 @@ $( "#formulaire" ).submit(function( event ) {
 				console.log(joursAmenorrhee);
 				semainesAmenorrhee = (joursAmenorrhee - joursAmenorrhee % 7) / 7 + 1;
 				console.log(semainesAmenorrhee);
-				text += "<p>Vous &ecirc;tes dans votre <b>" + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA)</b>.</p>";
+				text += "<p>Vous &ecirc;tes dans votre <b>" + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA)</b>.</p><hr>";
 				
 				// Date Fecondation
 				text += "<h2>F&eacute;condation</h2>";
 				var fecondationDate = new Date(date);
 				fecondationDate.setDate(date.getDate() + cycle - 14);
-				text += "<p>La date de f&eacute;condation estim&eacute;e est le " + fecondationDate.toLocaleDateString() + ".</p>";
+				text += "<p>La date de f&eacute;condation estim&eacute;e est le " + fecondationDate.toLocaleDateString() + ".</p><hr>";
 				
 				// Temps depuis fecondation
 				text += "<h2>Grossesse</h2>";
@@ -191,7 +191,7 @@ $( "#formulaire" ).submit(function( event ) {
 				console.log(semainesFecondation);
 				
 				text += "<p><b>Votre petit bébé a " + joursFecondation + " jours.</b></p>";
-				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG).</p>";
+				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG).</p><hr>";
 				
 				// Accouchement
 				text += "<h2>Accouchement</h2>";
