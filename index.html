@@ -172,8 +172,8 @@ $( "#formulaire" ).submit(function( event ) {
 				//console.log(joursAmenorrhee);
 				semainesAmenorrhee = (joursAmenorrhee - joursAmenorrhee % 7) / 7 + 1;
 				//console.log(semainesAmenorrhee);
-				text += "<p>Vous &ecirc;tes dans votre <b>" + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA)</b>."
-				text += "Plus pr&eacute;cis&eacute;ment, vous en &ecirc;tes à "+semainesAmenorrhee+" SA et "+ (joursAmenorrhee - 7*semainesAmenorrhee) +" jours.</p><hr>";
+				text += "<p>Vous &ecirc;tes dans votre <b>" + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA)</b>: "
+				text += ""+semainesAmenorrhee+" SA + "+ (joursAmenorrhee - 7*(semainesAmenorrhee-1)) +" jours.</p><hr>";
 				
 				// Date Fecondation
 				text += "<h2>F&eacute;condation</h2>";
@@ -192,8 +192,8 @@ $( "#formulaire" ).submit(function( event ) {
 				//console.log(semainesFecondation);
 				
 				text += "<p><b>Votre petit b&eacute;b&eacute; a " + joursFecondation + " jours.</b></p>";
-				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG).";
-				text += "Plus pr&eacute;cis&eacute;ment, vous en &ecirc;tes à "+semainesFecondation+" SG et "+ (joursFecondation - 7*semainesFecondation) +" jours.</p><hr>";
+				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG): ";
+				text += ""+semainesFecondation+" SG + "+ (joursFecondation - 7*(semainesFecondation-1)) +" jours.</p><hr>";
 				
 				// Accouchement
 				text += "<h2>Accouchement</h2>";
