@@ -2,71 +2,60 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Baby Calculator</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- Leave those next 4 lines if you care about users using IE8 -->
-    <!--[if lt IE 9]>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Baby Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- Leave those next 4 lines if you care about users using IE8 -->
+	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
-
 </head>
 
 <body>
-
-    <div class="container">
-
-      <div class="template">
-	      <h1 id="title">Baby Calculator</h1>
-              <h3><small>Calculez la date de f&eacute;condation ou d'accouchement pr&eacute;vue, l'&acirc;ge de votre b&eacute;b&eacute; ou encore votre nombre de semaines d'am&eacutenorrh&eacute;e en fonction de vos cycles.</small></h3>
-		
-		<div class="jumbotron">
-			<form id="formulaire">
-				<p>Indiquez le premier jour de vos derni&egrave;res r&egrave;gles: <input id="datePicker" class="form-control" type="date"></p>
-				<p>Quelle est la dur&eacute;e de vos cycles: 
-				<select id="cyclePicker" class="form-control">
-					<option value="21">21 jours</option>
-					<option value="22">22 jours</option>
-					<option value="23">23 jours</option>
-					<option value="24">24 jours</option>
-					<option value="25">25 jours</option>
-					<option value="26">26 jours</option>
-					<option value="27">27 jours</option>
-					<option value="28" selected>28 jours</option>
-					<option value="29">29 jours</option>
-					<option value="30">30 jours</option>
-					<option value="31">31 jours</option>
-					<option value="32">32 jours</option>
-					<option value="33">33 jours</option>
-					<option value="34">34 jours</option>
-					<option value="35">35 jours</option>
-				</select></p>
-				<button class="btn btn-default" type="submit">Calculer</button>
-			</form>
-        </div>
-		
-		<div class="panel panel-default" id="panel_resultats">
-		  <div class="panel-body" id="resultats">
-			
-		  </div>
+	<div class="container">
+		<div class="template">
+			<h1 id="title">Baby Calculator</h1>
+			<h3><small>Calculez la date de f&eacute;condation ou d'accouchement pr&eacute;vue, l'&acirc;ge de votre b&eacute;b&eacute; ou encore votre nombre de semaines d'am&eacutenorrh&eacute;e en fonction de vos cycles.</small></h3>
+			<div class="jumbotron">
+				<form id="formulaire">
+					<p>Premier jour de vos derni&egrave;res r&egrave;gles:
+						<input id="datePicker" class="form-control" type="date">
+					</p>
+					<p>Dur&eacute;e de vos cycles:
+						<select id="cyclePicker" class="form-control">
+							<option value="21">21 jours</option>
+							<option value="22">22 jours</option>
+							<option value="23">23 jours</option>
+							<option value="24">24 jours</option>
+							<option value="25">25 jours</option>
+							<option value="26">26 jours</option>
+							<option value="27">27 jours</option>
+							<option value="28" selected>28 jours</option>
+							<option value="29">29 jours</option>
+							<option value="30">30 jours</option>
+							<option value="31">31 jours</option>
+							<option value="32">32 jours</option>
+							<option value="33">33 jours</option>
+							<option value="34">34 jours</option>
+							<option value="35">35 jours</option>
+						</select>
+					</p>
+					<button class="btn btn-default" type="submit">Calculer</button>
+				</form>
+			</div>
+			<div class="panel panel-default" id="panel_resultats">
+				<div class="panel-body" id="resultats"></div>
+			</div>
 		</div>
-      </div>
-
-    </div>
-
-    <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	
+	</div>
+	<!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready( function() {
 			
@@ -92,127 +81,123 @@
 </body>
 
 </html>
-
-
-
 <script>
-function getAllUrlParams(url) {
-  // get query string from url (optional) or window
-  var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
-  // we'll store the parameters here
-  var obj = {};
-  // if query string exists
-  if (queryString) {
-    // stuff after # is not part of query string, so get rid of it
-    queryString = queryString.split('#')[0];
-    // split our query string into its component parts
-    var arr = queryString.split('&');
-    for (var i=0; i<arr.length; i++) {
-      // separate the keys and the values
-      var a = arr[i].split('=');
-      // in case params look like: list[]=thing1&list[]=thing2
-      var paramNum = undefined;
-      var paramName = a[0].replace(/\[\d*\]/, function(v) {
-        paramNum = v.slice(1,-1);
-        return '';
-      });
-      // set parameter value (use 'true' if empty)
-      var paramValue = typeof(a[1])==='undefined' ? true : a[1];
-      // (optional) keep case consistent
-      paramName = paramName.toLowerCase();
-      paramValue = paramValue.toLowerCase();
-      // if parameter name already exists
-      if (obj[paramName]) {
-        // convert value to array (if still string)
-        if (typeof obj[paramName] === 'string') {
-          obj[paramName] = [obj[paramName]];
-        }
-        // if no array index number specified...
-        if (typeof paramNum === 'undefined') {
-          // put the value on the end of the array
-          obj[paramName].push(paramValue);
-        }
-        // if array index number specified...
-        else {
-          // put the value at that index number
-          obj[paramName][paramNum] = paramValue;
-        }
-      }
-      // if param name doesn't exist yet, set it
-      else {
-        obj[paramName] = paramValue;
-      }
-    }
-  }
-  return obj;
-}
+	function getAllUrlParams(url) {
+	  // get query string from url (optional) or window
+	  var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+	  // we'll store the parameters here
+	  var obj = {};
+	  // if query string exists
+	  if (queryString) {
+	    // stuff after # is not part of query string, so get rid of it
+	    queryString = queryString.split('#')[0];
+	    // split our query string into its component parts
+	    var arr = queryString.split('&');
+	    for (var i=0; i<arr.length; i++) {
+	      // separate the keys and the values
+	      var a = arr[i].split('=');
+	      // in case params look like: list[]=thing1&list[]=thing2
+	      var paramNum = undefined;
+	      var paramName = a[0].replace(/\[\d*\]/, function(v) {
+	        paramNum = v.slice(1,-1);
+	        return '';
+	      });
+	      // set parameter value (use 'true' if empty)
+	      var paramValue = typeof(a[1])==='undefined' ? true : a[1];
+	      // (optional) keep case consistent
+	      paramName = paramName.toLowerCase();
+	      paramValue = paramValue.toLowerCase();
+	      // if parameter name already exists
+	      if (obj[paramName]) {
+	        // convert value to array (if still string)
+	        if (typeof obj[paramName] === 'string') {
+	          obj[paramName] = [obj[paramName]];
+	        }
+	        // if no array index number specified...
+	        if (typeof paramNum === 'undefined') {
+	          // put the value on the end of the array
+	          obj[paramName].push(paramValue);
+	        }
+	        // if array index number specified...
+	        else {
+	          // put the value at that index number
+	          obj[paramName][paramNum] = paramValue;
+	        }
+	      }
+	      // if param name doesn't exist yet, set it
+	      else {
+	        obj[paramName] = paramValue;
+	      }
+	    }
+	  }
+	  return obj;
+	}
 </script>
-
 <script>
-$( "#formulaire" ).submit(function( event ) {
-				event.preventDefault();
-				
-				$( "#resultats" ).html("");
-				
-				var text = "";
-				
-				var date = new Date($('#datePicker').val());
-				var cycle = parseInt($('#cyclePicker').val());
-				
-				var now = new Date();
-				now.setHours(0,0,0,0);
-				
-				// Amenorrhee
-				text += "<h2>Am&eacute;norrh&eacute;e</h2>";
-				var joursAmenorrhee = 0;
-				var semainesAmenorrhee = 0;
-				var semainesJoursAmenorrhee = 0;
-				
-				joursAmenorrhee = Math.floor((now.getTime() - date.getTime())/(1000*60*60*24.)) + 1;
-				//console.log(joursAmenorrhee);
-				semainesAmenorrhee = (joursAmenorrhee - joursAmenorrhee % 7) / 7 + 1;
-				//console.log(semainesAmenorrhee);
-				text += "<p>Vous &ecirc;tes dans votre <b>" + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA)</b>: "
-				text += ""+semainesAmenorrhee+" SA + "+ (joursAmenorrhee - 7*(semainesAmenorrhee-1)) +" jours.</p><hr>";
-				
-				// Date Fecondation
-				text += "<h2>F&eacute;condation</h2>";
-				var fecondationDate = new Date(date);
-				fecondationDate.setDate(date.getDate() + cycle - 14);
-				text += "<p>La date de f&eacute;condation estim&eacute;e est le " + fecondationDate.toLocaleDateString() + ".</p><hr>";
-				
-				// Temps depuis fecondation
-				text += "<h2>Grossesse</h2>";
-				var joursFecondation = 0;
-				var semainesFecondation = 0;
-				
-				joursFecondation = Math.floor((now.getTime() - fecondationDate.getTime())/(1000*60*60*24.)) + 1;
-				//console.log(joursFecondation);
-				semainesFecondation = (joursFecondation - joursFecondation % 7) / 7 + 1;
-				//console.log(semainesFecondation);
-				
-				text += "<p><b>Votre petit b&eacute;b&eacute; a " + joursFecondation + " jours.</b></p>";
-				text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG): ";
-				text += ""+semainesFecondation+" SG + "+ (joursFecondation - 7*(semainesFecondation-1)) +" jours.</p><hr>";
-				
-				// Accouchement
-				text += "<h2>Accouchement</h2>";
-				var accouchementDebut = new Date(fecondationDate.getTime());
-				var accouchementFin = new Date(fecondationDate.getTime());
-				accouchementDebut.setDate(accouchementDebut.getDate() + 7*38);
-				accouchementFin.setDate(accouchementFin.getDate() + 7*39 + 3);
-				
-				var joursRestantsAccouchement = Math.floor((accouchementDebut.getTime() - now.getTime())/(1000*60*60*24.));
-				text += "<p><b>Votre accouchement est pr&eacute;vu entre le " + accouchementDebut.toLocaleDateString() + "</b> et le " + accouchementFin.toLocaleDateString() + ". ";
-				text += "Vous accoucherez donc dans approximativement " + joursRestantsAccouchement + " jours.</p>";
-				
-				$( "#resultats" ).append(text);
-				$( "#panel_resultats" ).show();
-				
-				var shareLink = "";
-				shareLink = '<a id="shareLink" class="btn btn-link" href="' + window.location.origin + window.location.pathname + '?date=' + date.toISOString().substring(0, 10) + '&cycle=' + cycle + '" target="_blank">Raccourci vers mes dates</a>';
-				$( "#shareLink" ).remove();
-				$( "#resultats" ).after(shareLink);
-				
-			});
-		</script>
+	$( "#formulaire" ).submit(function( event ) {
+					event.preventDefault();
+					
+					$( "#resultats" ).html("");
+					
+					var text = "";
+					
+					var date = new Date($('#datePicker').val());
+					var cycle = parseInt($('#cyclePicker').val());
+					
+					var now = new Date();
+					now.setHours(0,0,0,0);
+					
+					// Amenorrhee
+					text += "<h2>Am&eacute;norrh&eacute;e</h2>";
+					var joursAmenorrhee = 0;
+					var semainesAmenorrhee = 0;
+					var semainesJoursAmenorrhee = 0;
+					
+					joursAmenorrhee = Math.floor((now.getTime() - date.getTime())/(1000*60*60*24.)) + 1;
+					//console.log(joursAmenorrhee);
+					semainesAmenorrhee = (joursAmenorrhee - joursAmenorrhee % 7) / 7 + 1;
+					//console.log(semainesAmenorrhee);
+					text += "<p>Vous &ecirc;tes dans votre <b>" + semainesAmenorrhee + "<sup>&egrave;me</sup> semaine d'am&eacute;norrh&eacute;e (SA)</b>: "
+					text += ""+semainesAmenorrhee+" SA + "+ (joursAmenorrhee - 7*(semainesAmenorrhee-1)) +" jours.</p><hr>";
+					
+					// Date Fecondation
+					text += "<h2>F&eacute;condation</h2>";
+					var fecondationDate = new Date(date);
+					fecondationDate.setDate(date.getDate() + cycle - 14);
+					text += "<p>La date de f&eacute;condation estim&eacute;e est le " + fecondationDate.toLocaleDateString() + ".</p><hr>";
+					
+					// Temps depuis fecondation
+					text += "<h2>Grossesse</h2>";
+					var joursFecondation = 0;
+					var semainesFecondation = 0;
+					
+					joursFecondation = Math.floor((now.getTime() - fecondationDate.getTime())/(1000*60*60*24.)) + 1;
+					//console.log(joursFecondation);
+					semainesFecondation = (joursFecondation - joursFecondation % 7) / 7 + 1;
+					//console.log(semainesFecondation);
+					
+					text += "<p><b>Votre petit b&eacute;b&eacute; a " + joursFecondation + " jours.</b></p>";
+					text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG): ";
+					text += ""+semainesFecondation+" SG + "+ (joursFecondation - 7*(semainesFecondation-1)) +" jours.</p><hr>";
+					
+					// Accouchement
+					text += "<h2>Accouchement</h2>";
+					var accouchementDebut = new Date(fecondationDate.getTime());
+					var accouchementFin = new Date(fecondationDate.getTime());
+					accouchementDebut.setDate(accouchementDebut.getDate() + 7*38);
+					accouchementFin.setDate(accouchementFin.getDate() + 7*39 + 3);
+					
+					var joursRestantsAccouchement = Math.floor((accouchementDebut.getTime() - now.getTime())/(1000*60*60*24.));
+					text += "<p><b>Votre accouchement est pr&eacute;vu entre le " + accouchementDebut.toLocaleDateString() + "</b> et le " + accouchementFin.toLocaleDateString() + ". ";
+					text += "Vous accoucherez donc dans approximativement " + joursRestantsAccouchement + " jours.</p>";
+					
+					$( "#resultats" ).append(text);
+					$( "#panel_resultats" ).show();
+					
+					var shareLink = "";
+					shareLink = '<a id="shareLink" class="btn btn-link" href="' + window.location.origin + window.location.pathname + '?date=' + date.toISOString().substring(0, 10) + '&cycle=' + cycle + '" target="_blank">Raccourci vers mes dates</a>';
+					$( "#shareLink" ).remove();
+					$( "#resultats" ).after(shareLink);
+					
+				});
+</script>
