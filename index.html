@@ -22,30 +22,40 @@
 			<h1 id="title">Baby Calculator</h1>
 			<h3><small>Calculez la date de f&eacute;condation ou d'accouchement pr&eacute;vue, l'&acirc;ge de votre b&eacute;b&eacute; ou encore votre nombre de semaines d'am&eacutenorrh&eacute;e en fonction de vos cycles.</small></h3>
 			<div class="jumbotron">
-				<form id="formulaire">
-					<p>Premier jour de vos derni&egrave;res r&egrave;gles:
-						<input id="datePicker" class="form-control" type="date">
-					</p>
-					<p>Dur&eacute;e de vos cycles:
-						<select id="cyclePicker" class="form-control">
-							<option value="21">21 jours</option>
-							<option value="22">22 jours</option>
-							<option value="23">23 jours</option>
-							<option value="24">24 jours</option>
-							<option value="25">25 jours</option>
-							<option value="26">26 jours</option>
-							<option value="27">27 jours</option>
-							<option value="28" selected>28 jours</option>
-							<option value="29">29 jours</option>
-							<option value="30">30 jours</option>
-							<option value="31">31 jours</option>
-							<option value="32">32 jours</option>
-							<option value="33">33 jours</option>
-							<option value="34">34 jours</option>
-							<option value="35">35 jours</option>
-						</select>
-					</p>
-					<button class="btn btn-default" type="submit">Calculer</button>
+				<form id="formulaire" class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-sm-5" for="datePicker">1<sup>er</sup> jour de vos derni&egrave;res r&egrave;gles:</label>
+						<div class="col-sm-7">
+							<input type="date" class="form-control" id="datePicker">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-5" for="cyclePicker">Dur&eacute;e de vos cycles:</label>
+						<div class="col-sm-7">
+							<select id="cyclePicker" class="form-control">
+								<option value="21">21 jours</option>
+								<option value="22">22 jours</option>
+								<option value="23">23 jours</option>
+								<option value="24">24 jours</option>
+								<option value="25">25 jours</option>
+								<option value="26">26 jours</option>
+								<option value="27">27 jours</option>
+								<option value="28" selected>28 jours</option>
+								<option value="29">29 jours</option>
+								<option value="30">30 jours</option>
+								<option value="31">31 jours</option>
+								<option value="32">32 jours</option>
+								<option value="33">33 jours</option>
+								<option value="34">34 jours</option>
+								<option value="35">35 jours</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group"> 
+						<div class="col-sm-offset-5 col-sm-7">
+							<button type="submit" class="btn btn-default">Calculer</button>
+						</div>
+					</div>
 				</form>
 			</div>
 			<div class="panel panel-default" id="panel_resultats">
