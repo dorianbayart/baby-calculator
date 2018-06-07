@@ -7,12 +7,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="favicon.png" />
 	<title>Baby Calculator</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
 </head>
 
 <body>
+	<div data-role="page">
+		<div data-role="header">
+			<h1 id="title" class="title">Baby Calculator</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div id="description" class="ui-body ui-body-z ui-corner_all" >Calculez la date de f&eacute;condation ou d'accouchement pr&eacute;vue, l'&acirc;ge de votre b&eacute;b&eacute; ou encore votre nombre de semaines d'am&eacutenorrh&eacute;e en fonction de vos cycles.</div>
+			<p>Page content goes here.</p>
+		</div>
+		<div data-role="footer">
+			<h4 id="footer">Dorian Bayart</h4>
+		</div>
+	</div>
 	<div class="container">
 		<div class="template">
 			<h1 id="title" class="title">Baby Calculator</h1><hr>
@@ -59,9 +72,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
 	<script>
 		$(document).ready( function() {
 			
