@@ -184,7 +184,7 @@
 					semainesFecondation = (joursFecondation - joursFecondation % 7) / 7 + 1;
 					//console.log(semainesFecondation);
 					moisFecondation = Math.floor((joursFecondation / 365) * 12);
-					semainesEtMoisFecondation = (joursFecondation / 365) * 12 - moisFecondation;
+					semainesEtMoisFecondation = ((joursFecondation / 365) * 12 - moisFecondation) * 100.;
 					console.log(moisFecondation);
 					console.log(semainesEtMoisFecondation);
 					if(semainesEtMoisFecondation < 12.5) semainesEtMoisFecondation = 0;
