@@ -204,9 +204,9 @@
 					if ( moisFecondation > 0 ) {
 						text += "<p>Vous &ecirc;tes enceinte d'environ " + moisFecondation + " mois";
 						if ( semainesEtMoisFecondation > 0 ) {
-							text += " et " + semainesEtMoisFecondation + " semaines";
+							text += " et " + semainesEtMoisFecondation + " semaine" + (semainesEtMoisFecondation > 1 ? "s" : "");
 						}
-						text += " (ou " + moisFecondationPrecis + " mois et " + joursEtMoisFecondationPrecis + " jours).</p>";
+						text += " (ou plus pr&eacute;cisemment" + moisFecondationPrecis + " MG + " + joursEtMoisFecondationPrecis + " jours).</p>";
 					}
 					text += "<hr>";
 					
