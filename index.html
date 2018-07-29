@@ -176,15 +176,35 @@
 					text += "<h2>Grossesse</h2>";
 					var joursFecondation = 0;
 					var semainesFecondation = 0;
+					var moisFecondation = 0;
+					var semainesEtMoisFecondation = 0;
 					
 					joursFecondation = Math.floor((now.getTime() - fecondationDate.getTime())/(1000*60*60*24.)) + 1;
 					//console.log(joursFecondation);
 					semainesFecondation = (joursFecondation - joursFecondation % 7) / 7 + 1;
 					//console.log(semainesFecondation);
+					moisFecondation = Math.floor((joursFecondation / 365) * 12);
+					semainesEtMoisFecondation = (joursFecondation / 365) * 12 - moisFecondation;
+					console.log(moisFecondation);
+					console.log(semainesEtMoisFecondation);
+					if(semainesEtMoisFecondation < 12.5) semainesEtMoisFecondation = 0;
+					else if (semainesEtMoisFecondation < 37.5) semainesEtMoisFecondation = 1;
+					else if (semainesEtMoisFecondation < 62.5) semainesEtMoisFecondation = 2;
+					else if (semainesEtMoisFecondation < 87.5) semainesEtMoisFecondation = 3;
+					else { semainesEtMoisFecondation = 0; moisFecondation ++; }
+					console.log(semainesEtMoisFecondation);
 					
 					text += "<p><b>Votre petit b&eacute;b&eacute; a " + joursFecondation + " jours.</b></p>";
 					text += "<p>Vous &ecirc;tes dans votre " + semainesFecondation + "<sup>ème</sup> semaine de grossesse (SG): ";
-					text += "" + (semainesFecondation-1) +" SG + "+ (joursFecondation - 7*(semainesFecondation-1)) +" jours.</p><hr>";
+					text += "" + (semainesFecondation-1) +" SG + "+ (joursFecondation - 7*(semainesFecondation-1)) +" jours.</p>";
+					if ( moisFecondation > 0 ) {
+						text += "<p>Vous pouvez dire que vous &ecirc;tes enceinte d'environ " + moisFecondation + " mois";
+						if ( semainesEtMoisFecondation > 0 ) {
+							text += " et " + semainesEtMoisFecondation + " semaines";
+						}
+						text += ".</p>";
+					}
+					text += "<hr>";
 					
 					// Accouchement
 					text += "<h2>Accouchement</h2>";
